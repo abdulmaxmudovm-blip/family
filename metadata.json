@@ -1,0 +1,6 @@
+{
+  "name": "Shajara - Oila Daraxti",
+  "description": "Oila a'zolarini va ularning tarixini saqlash uchun chiroyli oila daraxti ilovasi.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

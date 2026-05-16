@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@theme {
+  --color-natural-dark: #5A5A40;
+  --color-natural-sage: #8B926E;
+  --color-natural-base: #FDFCF8;
+  --color-natural-sidebar: #F9F8F4;
+  --color-natural-border: #E5E1D8;
+  --color-natural-taupe: #DED9CE;
+  --color-natural-tan: #D2B48C;
+
+  --font-shrikhand: "Shrikhand", cursive;
+  --font-serif: "Playfair Display", "Times New Roman", serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+}
+
+@layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Shrikhand&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;600;700&display=swap');
+
+  body {
+    font-family: var(--font-shrikhand);
+  }
+}
