@@ -29,13 +29,18 @@ export const CrashModal: React.FC<CrashModalProps> = ({ members, onClose, onDele
         className="bg-white rounded-2xl w-full max-w-md overflow-hidden shadow-2xl border-4 border-red-200"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-red-600 p-6 text-white flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Trash2 className="w-6 h-6" />
-            <h2 className="text-xl font-bold tracking-wide">A'zoni O'chirish (Crash)</h2>
+        <div className="bg-red-500 p-8 text-white flex items-center justify-between shadow-lg">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm border border-white/30">
+              <Trash2 className="w-8 h-8" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-black tracking-tight drop-shadow-md">Crash Rejimi</h2>
+              <p className="text-[10px] opacity-80 uppercase tracking-widest font-black">A'zolarni o'chirish</p>
+            </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors">
-            <X className="w-5 h-5" />
+          <button onClick={onClose} className="p-3 hover:bg-white/20 rounded-full transition-all">
+            <X className="w-6 h-6" />
           </button>
         </div>
 
@@ -69,7 +74,7 @@ export const CrashModal: React.FC<CrashModalProps> = ({ members, onClose, onDele
                         }
                       }
                     }}
-                    className="p-3 bg-red-600 text-white rounded-lg hover:bg-red-700 shadow-sm active:scale-90 transition-all"
+                    className="p-3 bg-red-600 text-white rounded-full hover:bg-black shadow-lg active:scale-90 transition-all flex items-center justify-center aspect-square"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
@@ -82,7 +87,7 @@ export const CrashModal: React.FC<CrashModalProps> = ({ members, onClose, onDele
         <div className="p-6 bg-gray-50 border-t border-gray-100 flex justify-end">
           <button 
             onClick={onClose}
-            className="px-6 py-2 bg-gray-200 text-gray-600 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-gray-300 transition-all"
+            className="px-10 py-3 bg-gray-200 text-gray-600 rounded-full font-black text-sm tracking-widest uppercase hover:bg-gray-300 transition-all active:scale-95 shadow-md"
           >
             Yopish
           </button>

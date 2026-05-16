@@ -60,13 +60,18 @@ export const AddMemberModal: React.FC<AddMemberModalProps> = ({ onClose, onAdd, 
         className="bg-natural-base rounded-2xl w-full max-w-xl overflow-hidden shadow-2xl border-4 border-natural-border"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="bg-natural-dark p-6 text-white flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <UserPlus className="w-6 h-6 text-natural-sage" />
-            <h2 className="text-xl font-bold tracking-wide">Yangi Shajara A'zosi</h2>
+        <div className="bg-natural-sage p-8 text-white flex items-center justify-between shadow-lg">
+          <div className="flex items-center gap-4">
+            <div className="p-3 bg-white/20 rounded-xl backdrop-blur-sm border border-white/30">
+              <UserPlus className="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h2 className="text-2xl font-black tracking-tight drop-shadow-md">Yangi Shajara A'zosi</h2>
+              <p className="text-[10px] opacity-80 uppercase tracking-widest font-black">Oilaga yangi shaxs qo'shish</p>
+            </div>
           </div>
-          <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors">
-            <X className="w-5 h-5" />
+          <button onClick={onClose} className="p-3 hover:bg-white/20 rounded-full transition-all border border-transparent hover:border-white/20">
+            <X className="w-6 h-6" />
           </button>
         </div>
 
@@ -163,7 +168,7 @@ export const AddMemberModal: React.FC<AddMemberModalProps> = ({ onClose, onAdd, 
 
           <button
             type="submit"
-            className="w-full py-4 bg-natural-sage text-white rounded-xl font-bold text-lg uppercase tracking-widest hover:bg-natural-dark transition-all shadow-lg active:scale-[0.98]"
+            className="w-full py-5 bg-natural-sage text-white rounded-full font-black text-xl uppercase tracking-[0.2em] hover:bg-natural-dark transition-all shadow-[0_10px_25px_rgba(255,159,28,0.3)] active:scale-95"
           >
             Boshlash / Qo'shish
           </button>

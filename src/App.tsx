@@ -138,12 +138,15 @@ export default function App() {
       />
 
       {/* Header */}
-      <header className="relative z-20 min-h-[5rem] py-4 bg-natural-dark flex flex-wrap items-center justify-between px-8 text-white shrink-0 shadow-lg gap-4">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 bg-natural-sage rounded-full flex items-center justify-center">
-            <TreeDeciduous className="h-6 w-6" />
+      <header className="relative z-20 min-h-[5rem] py-6 bg-natural-sage flex flex-wrap items-center justify-between px-10 text-white shrink-0 shadow-2xl gap-4 border-b-4 border-natural-dark/10">
+        <div className="flex items-center gap-5">
+          <div className="w-14 h-14 bg-white text-natural-sage rounded-2xl rotate-3 shadow-lg flex items-center justify-center group-hover:rotate-0 transition-transform">
+            <TreeDeciduous className="h-8 w-8" />
           </div>
-          <h1 className="text-2xl font-bold tracking-tight">Mening Shajaram</h1>
+          <div>
+            <h1 className="text-3xl font-black tracking-tight drop-shadow-md">Mening Shajaram</h1>
+            <p className="text-[10px] uppercase font-bold tracking-[0.2em] opacity-80">Oila Tarixi va Avlodlar</p>
+          </div>
         </div>
         
         <div className="flex flex-wrap items-center gap-6">
@@ -177,25 +180,25 @@ export default function App() {
             <button 
               onClick={handleSave}
               title="Shajarani saqlash (JSON)"
-              className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all text-white border border-white/20 active:scale-95"
+              className="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-all text-white border border-white/20 active:scale-95 flex items-center justify-center"
             >
               <Save className="w-5 h-5" />
             </button>
-            <label className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all text-white border border-white/20 active:scale-95 cursor-pointer">
+            <label className="p-3 bg-white/10 hover:bg-white/20 rounded-full transition-all text-white border border-white/20 active:scale-95 cursor-pointer flex items-center justify-center">
               <Upload className="w-5 h-5" />
               <input type="file" accept=".json" onChange={handleImport} className="hidden" />
             </label>
             <div className="h-8 w-px bg-white/10 mx-1" />
             <button 
               onClick={() => setIsAddingInModal(true)}
-              className="flex items-center gap-2 bg-natural-sage px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-opacity-90 transition-all shadow-md active:scale-95"
+              className="flex items-center gap-2 bg-white text-natural-sage px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-natural-dark hover:text-white transition-all shadow-xl active:scale-95"
             >
               <Plus className="w-4 h-4" />
               Qo'shish
             </button>
             <button 
               onClick={() => setIsCrashingModalOpen(true)}
-              className="flex items-center gap-2 bg-red-600 px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-red-700 transition-all shadow-md active:scale-95 text-white"
+              className="flex items-center gap-2 bg-red-500 px-6 py-2.5 rounded-full text-xs font-black uppercase tracking-widest hover:bg-black transition-all shadow-xl active:scale-95 text-white"
             >
               <Trash2 className="w-4 h-4" />
               Crash
@@ -230,25 +233,27 @@ export default function App() {
 
                 {/* Connector line between generations */}
                 {idx < generations.length - 1 && (
-                  <div className="w-0.5 h-16 bg-natural-taupe mt-12 mb-[-3rem]" />
+                  <div className="w-1 h-20 bg-natural-border shadow-sm mt-12 mb-[-3rem] rounded-full" />
                 )}
               </div>
             ))}
 
             {/* Empty State */}
             {members.length === 0 && (
-              <div className="text-center py-24 px-12 bg-white/50 backdrop-blur-sm rounded-3xl border-4 border-natural-border shadow-2xl max-w-md mx-auto">
-                <Users className="w-16 h-16 text-natural-sage mx-auto mb-6 animate-bounce" />
-                <h3 className="text-2xl font-serif font-bold text-natural-dark mb-2">Shajara Bo'sh</h3>
-                <p className="text-xs text-gray-500 uppercase tracking-widest mb-8 leading-relaxed">
-                  Oila tarixingizni yozishni boshlang. Birinchi bo'lib o'z ismingizni kiriting.
+              <div className="text-center py-24 px-12 bg-white/80 backdrop-blur-md rounded-[3rem] border-8 border-natural-border shadow-[0_20px_50px_rgba(255,159,28,0.15)] max-w-lg mx-auto">
+                <div className="w-24 h-24 bg-natural-sage/20 rounded-full flex items-center justify-center mx-auto mb-8 animate-bounce">
+                   <Users className="w-12 h-12 text-natural-sage" />
+                </div>
+                <h3 className="text-3xl font-serif font-black text-natural-dark mb-4 drop-shadow-sm">Shajara Bo'sh :)</h3>
+                <p className="text-sm text-gray-600 uppercase font-bold tracking-widest mb-10 leading-relaxed max-w-[280px] mx-auto italic">
+                  Oila tarixingizning ilk sahifasini bugun yozing!
                 </p>
                 <button
                   onClick={() => setIsAddingInModal(true)}
-                  className="w-full py-4 bg-natural-sage text-white rounded-xl font-bold text-lg uppercase tracking-widest hover:bg-natural-dark transition-all shadow-lg active:scale-95 flex items-center justify-center gap-3"
+                  className="group w-full py-5 bg-natural-sage text-white rounded-full font-black text-xl uppercase tracking-[0.2em] hover:bg-natural-dark transition-all shadow-[0_10px_30px_rgba(255,159,28,0.4)] active:scale-95 flex items-center justify-center gap-4"
                 >
-                  <Plus className="w-6 h-6" />
-                  Ism Yozish (Boshlash)
+                  <Plus className="w-8 h-8 group-hover:rotate-90 transition-transform" />
+                  Ism Yozish
                 </button>
               </div>
             )}

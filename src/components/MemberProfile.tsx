@@ -44,14 +44,14 @@ export const MemberProfile: React.FC<MemberProfileProps> = ({ member, members, o
         className="bg-natural-sidebar rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto shadow-2xl border-4 border-natural-border"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="relative h-40 bg-natural-dark flex items-center justify-between px-8 text-white sticky top-0 z-10">
+        <div className="relative h-40 bg-natural-sage flex items-center justify-between px-8 text-white sticky top-0 z-10 shadow-lg">
           <div>
-            <h2 className="text-2xl font-bold">Profil Tafsilotlari</h2>
-            <p className="text-[10px] opacity-70 uppercase tracking-widest font-bold">Shaxsiy ma'lumotlar va yosh hisobi</p>
+            <h2 className="text-3xl font-black drop-shadow-md">A'zo Profili</h2>
+            <p className="text-[10px] opacity-90 uppercase tracking-[0.3em] font-black">Shaxsiy ma'lumotlar va yosh</p>
           </div>
           <button
             onClick={onClose}
-            className="p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors text-white"
+            className="p-3 bg-white/20 hover:bg-white/40 rounded-full transition-all text-white border border-white/30 backdrop-blur-sm"
           >
             <X className="w-6 h-6" />
           </button>
@@ -59,24 +59,24 @@ export const MemberProfile: React.FC<MemberProfileProps> = ({ member, members, o
 
         <div className="p-8">
           {isEditing ? (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-natural-sage uppercase tracking-widest">Ism</label>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-2 gap-5">
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-natural-sage uppercase tracking-[0.2em]">Ism</label>
                   <input
                     type="text"
                     value={formData.firstName}
                     onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-white border border-natural-border rounded-lg focus:outline-none focus:ring-1 focus:ring-natural-dark text-sm"
+                    className="w-full px-5 py-3.5 bg-white border-2 border-natural-border rounded-xl focus:outline-none focus:border-natural-sage transition-colors text-sm font-bold"
                   />
                 </div>
-                <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-natural-sage uppercase tracking-widest">Familiya</label>
+                <div className="space-y-2">
+                  <label className="text-[10px] font-black text-natural-sage uppercase tracking-[0.2em]">Familiya</label>
                   <input
                     type="text"
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    className="w-full px-4 py-2.5 bg-white border border-natural-border rounded-lg focus:outline-none focus:ring-1 focus:ring-natural-dark text-sm"
+                    className="w-full px-5 py-3.5 bg-white border-2 border-natural-border rounded-xl focus:outline-none focus:border-natural-sage transition-colors text-sm font-bold"
                   />
                 </div>
               </div>
@@ -198,10 +198,10 @@ export const MemberProfile: React.FC<MemberProfileProps> = ({ member, members, o
                 </p>
               </div>
 
-              <div className="flex gap-4 pt-4">
+              <div className="flex gap-4 pt-6">
                 <button
                   onClick={() => setIsEditing(true)}
-                  className="flex-2 bg-natural-dark text-white py-3 px-6 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-opacity-90 transition-all shadow-md"
+                  className="flex-2 bg-natural-sage text-white py-4 px-10 rounded-full font-black text-sm tracking-widest uppercase hover:bg-natural-dark transition-all shadow-lg active:scale-95"
                 >
                   Tahrirlash
                 </button>
@@ -212,7 +212,7 @@ export const MemberProfile: React.FC<MemberProfileProps> = ({ member, members, o
                       onClose();
                     }
                   }}
-                  className="flex-1 bg-red-600 text-white py-3 px-6 rounded-lg font-bold text-sm tracking-widest uppercase hover:bg-red-700 transition-all shadow-md flex items-center justify-center gap-2"
+                  className="flex-1 bg-red-500 text-white py-4 px-8 rounded-full font-black text-sm tracking-widest uppercase hover:bg-red-600 transition-all shadow-lg flex items-center justify-center gap-2 active:scale-95"
                 >
                   <Trash2 className="w-5 h-5" />
                   Crash
