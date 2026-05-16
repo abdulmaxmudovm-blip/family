@@ -10,7 +10,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Plus, TreeDeciduous, Info, Users, ArrowUp, ArrowDown, Trash2 } from 'lucide-react';
+import { Plus, TreeDeciduous, Info, Users, ArrowUp, ArrowDown, Trash2, Save, Upload } from 'lucide-react';
 import { FamilyMember, FamilyRole } from './types';
 import { MemberCard } from './components/MemberCard';
 import { MemberProfile } from './components/MemberProfile';
@@ -91,6 +91,44 @@ export default function App() {
     setIsAddingInModal(false);
   };
 
+  const handleSave = () => {
+    if (members.length === 0) {
+      alert("Saqlash uchun ma'lumot yo'q!");
+      return;
+    }
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(members, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href",     dataStr);
+    downloadAnchorNode.setAttribute("download", `shajara_malumotlari_${new Date().toISOString().split('T')[0]}.json`);
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  };
+
+  const handleImport = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (event) => {
+      try {
+        const importedMembers = JSON.parse(event.target?.result as string);
+        if (Array.isArray(importedMembers)) {
+          if (window.confirm("Mavjud barcha ma'lumotlar o'chiriladi va yangi shajara yuklanadi. Rozimisiz?")) {
+            setMembers(importedMembers);
+          }
+        } else {
+          alert("Noto'g'ri fayl formati!");
+        }
+      } catch (err) {
+        alert("Faylni o'qishda xatolik yuz berdi!");
+      }
+    };
+    reader.readAsText(file);
+    // Reset input
+    e.target.value = '';
+  };
+
   return (
     <div className="relative min-h-screen bg-natural-base flex flex-col font-shrikhand selection:bg-natural-taupe selection:text-natural-dark border-8 border-natural-border overflow-hidden">
       {/* Background Pattern */}
@@ -136,6 +174,18 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-2">
+            <button 
+              onClick={handleSave}
+              title="Shajarani saqlash (JSON)"
+              className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all text-white border border-white/20 active:scale-95"
+            >
+              <Save className="w-5 h-5" />
+            </button>
+            <label className="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition-all text-white border border-white/20 active:scale-95 cursor-pointer">
+              <Upload className="w-5 h-5" />
+              <input type="file" accept=".json" onChange={handleImport} className="hidden" />
+            </label>
+            <div className="h-8 w-px bg-white/10 mx-1" />
             <button 
               onClick={() => setIsAddingInModal(true)}
               className="flex items-center gap-2 bg-natural-sage px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-opacity-90 transition-all shadow-md active:scale-95"
